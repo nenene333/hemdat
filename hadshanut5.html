@@ -22,6 +22,7 @@
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
+            overflow-x: hidden; /* מניעת גלילה אופקית */
         }
 
         .container {
@@ -63,7 +64,7 @@
                 transform: translate(0, 0);
             }
             100% {
-                transform: translate(50%, 50%);
+                transform: translate(100%, 100%);
             }
         }
 
@@ -204,17 +205,18 @@
                 border-radius: 8px;
                 padding: 10px;
                 background-color: white;
-                text-align: right; /* מיושר לימין */
+                text-align: right;
             }
 
             .meetings td {
-                text-align: right; /* מיושר לימין */
+                text-align: right;
                 padding-left: 10px;
                 padding-right: 10px;
                 display: block;
                 border-bottom: 1px solid #ddd;
                 margin-bottom: 10px;
-                word-wrap: break-word; /* שבירת מילים */
+                word-wrap: break-word;
+                overflow: hidden; /* מונע חיתוך טקסט */
             }
 
             .meetings td:last-child {
@@ -223,7 +225,7 @@
             }
 
             .meetings td:before {
-                content: attr(data-label) " "; /* רווח אחרי הכותרת */
+                content: attr(data-label) " ";
                 font-weight: bold;
             }
         }
