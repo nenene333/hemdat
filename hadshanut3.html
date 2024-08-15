@@ -192,21 +192,39 @@
                 width: 100%;
             }
 
+            .meetings thead {
+                display: none;
+            }
+
+            .meetings tr {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: white;
+            }
+
             .meetings td {
+                text-align: left;
+                padding-left: 10px;
+                padding-right: 10px;
                 display: flex;
                 justify-content: space-between;
-                padding: 10px;
-                text-align: left;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+
+            .meetings td:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
             }
 
             .meetings td:before {
                 content: attr(data-label);
                 font-weight: bold;
-                width: 40%;
-            }
-
-            .meetings td[data-label="שיעור"] {
-                justify-content: flex-start;
+                margin-right: 10px;
             }
         }
     </style>
