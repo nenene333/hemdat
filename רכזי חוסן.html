@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רכזי חדשנות פדגוגית-חינוכית לעל-יסודי</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7f3f96;
+            --secondary-color: #fbaf43;
+            --background-color: #f9f4ff;
+            --text-color: #333;
+            --light-purple: #a77bb5;
+            --light-orange: #ffd699;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+       header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    animation: move-background 60s linear infinite; /* האטת התנועה */
+    z-index: 0; /* יש לוודא שהפסים יהיו מאחורי הלוגו והכותרת */
+}
+
+.logo, h1 {
+    position: relative;
+    z-index: 1; /* כדי להבטיח שהלוגו והכותרת יהיו מעל הפסים */
+}
+
+
+        @keyframes move-background {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50%, 50%);
+            }
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .goals {
+            background-color: var(--light-purple);
+            color: white;
+        }
+
+        .goals h3 {
+            color: var(--secondary-color);
+        }
+
+        .goals ul, .applications ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .goals li:before, .applications li:before {
+            content: '✓';
+            color: var(--secondary-color);
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .meetings table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .meetings th, .meetings td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: right;
+        }
+
+        .meetings th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .meetings tr:nth-child(even) {
+            background-color: var(--light-orange);
+        }
+
+        .meetings tr:hover {
+            background-color: #ffe0b3;
+        }
+
+        .final-task {
+            background-color: var(--light-orange);
+        }
+
+        .final-task ol {
+            padding-right: 20px;
+        }
+
+        .bibliography ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .bibliography li {
+            margin-bottom: 10px;
+            text-indent: -20px;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+
+            .meetings table, .meetings thead, .meetings tbody, .meetings th, .meetings td, .meetings tr {
+                display: block;
+            }
+
+            .meetings thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            .meetings td {
+                position: relative;
+                padding-left: 50%;
+                text-align: left;
+            }
+
+            .meetings td:before {
+                content: attr(data-label);
+                position: absolute;
+                right: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+        <div style="display: inline-block; position: relative;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/%D7%9C%D7%95%D7%92%D7%95_%D7%94%D7%9E%D7%9B%D7%9C%D7%9C%D7%94_%D7%94%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%AA_%D7%97%D7%9E%D7%93%D7%AA_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F.png" 
+                 alt="לוגו המכללה האקדמית חמדת" 
+                 style="max-width: 200px; filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));">
+        </div>
+        <h1>רכזי חדשנות פדגוגית-חינוכית לעל-יסודי</h1>
+    </div>
+</header>
+
+
+    <div class="container">
+        <section class="section">
+            <h2>רקע</h2>
+            <p>הקורס להכשרת רכזי חדשנות פדגוגית בבתי הספר, נועד לענות על הצורך הגובר ביצירת סביבה חינוכית חדשנית ופורצת דרך בבתי הספר העל-יסודיים, המתאימה למאה ה21. בעידן שבו הטכנולוגיה מתפתחת במהירות, והכישורים הנדרשים מתלמידים בשוק העבודה משתנים תדיר, ישנה חשיבות עליונה להכשיר מורים להוביל שינויים פדגוגיים ולהטמיע שיטות הוראה חדשות ויעילות.</p>
+            <p>הקורס מבוסס על גישות תיאורטיות עדכניות המשלבות את עקרונות הלמידה המבוזרת, החשיבה היצירתית והלמידה המותאמת אישית. בנוסף, הוא מתמקד בהיבטים הפרקטיים של יישום חדשנות פדגוגית בבתי הספר, כולל שימוש בטכנולוגיות מתקדמות, עיצוב סביבות למידה גמישות, פיתוח שיטות הערכה חלופיות וניהול פרויקטים חדשניים.</p>
+        </section>
+
+        <section class="section goals">
+            <h2>מטרות</h2>
+            <h3>הובלת חדשנות פדגוגית בבתי ספר על-יסודיים:</h3>
+            <p>בקורס נלמד להוביל תהליכי שינוי חינוכיים מותאמים לצרכים הייחודיים של התלמידים והמורים. המשתתפים ילמדו ליזום פרויקטים חינוכיים חדשניים וליישם (ולהדריך) שיטות הוראה עדכניות בבית הספר שלהם.</p>
+            
+            <h3>שימוש בטכנולוגיות מתקדמות לשיפור ההוראה:</h3>
+            <p>הקורס מעניק כלים לשילוב טכנולוגיות כמו מערכות לניהול למידה, הוראה מרחוק וכלים/גישות דיגיטלים נוספים לשיפור חוויית הלמידה וההוראה. המורים ילמדו כיצד להשתמש בטכנולוגיות אלה כדי להגביר את מעורבות התלמידים ולשפר את הישגיהם.</p>
+            
+            <h3>חיזוק שיתוף הפעולה עם הורים וקהילה:</h3>
+            <p>כדי ליצור סביבה חינוכית חדשנית, נדרשת תשתית חברתית-ערכית-קהילתית תומכת. המשתתפים ילמדו כיצד לשלב את ההורים והקהילה בפרויקטים חדשניים ולהבטיח מעורבות רחבה ומבוזרת בתהליך החינוכי.</p>
+        </section>
+
+        <section class="section applications">
+            <h2>יישומים פדגוגיים חינוכיים</h2>
+            <ul>
+                <li>עידוד תלמידים לעבוד על פרויקטים שיתופיים המדמים מצבי חיים אמיתיים ומפתחים כישורים מעשיים.</li>
+                <li>שימוש בשיטות חדשניות להוראה השוברות את מבנה הלמידה המסורתי.</li>
+                <li>תכנון למידה מותאמת אישית במרחבים גמישים וחדשניים.</li>
+            </ul>
+        </section>
+
+        <section class="section meetings">
+            <h2>פירוט המפגשים</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>שיעור</th>
+                        <th>נושא</th>
+                        <th>פירוט</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="שיעור">1</td>
+                        <td data-label="נושא">מבוא לחדשנות פדגוגית</td>
+                        <td data-label="פירוט">סקירת מושגי יסוד בחדשנות פדגוגית, הבנת ההיסטוריה והאבולוציה של השיטות החינוכיות החדשניות, והיכרות עם המטרות והאתגרים של רכז חדשנות בבית הספר.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">2</td>
+                        <td data-label="נושא">ניתוח מודלים חינוכיים חדשניים</td>
+                        <td data-label="פירוט">בחינת מודלים חינוכיים חדשניים מהארץ והעולם, יתרונות וחסרונות של כל מודל, ושיטות להטמעתם בבתי ספר שונים תוך התאמה לצרכי בית הספר.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">3</td>
+                        <td data-label="נושא">מיומנויות למידה וחשיבה חדשנית</td>
+                        <td data-label="פירוט">פיתוח מיומנויות למידה חדשניות בקרב תלמידים, עידוד חשיבה יצירתית, חקרנות, פתרון בעיות והתנסות בשיטות הוראה שונות כמו למידה אימרסיבית, למידת PBL, למידה בכיתה הפוכה ועוד.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">4</td>
+                        <td data-label="נושא">טכנולוגיה בחינוך</td>
+                        <td data-label="פירוט">חקר הטכנולוגיות החדשות והטמעתן בהוראה, כלים דיגיטליים לשיפור הלמידה, מערכות לניהול למידה (LMS) וכו'.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">5</td>
+                        <td data-label="נושא">עיצוב סביבות למידה חדשניות</td>
+                        <td data-label="פירוט">פיתוח ועיצוב סביבות למידה המעודדות יצירתיות ושיתוף פעולה, תכנון חללי למידה גמישים, והקמת אזורי חדשנות בבית הספר.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">6</td>
+                        <td data-label="נושא">שיטות הערכה חדשניות</td>
+                        <td data-label="פירוט">פיתוח שיטות הערכה חלופיות, הערכה מבוססת ביצועים, תלקיטים (פורפוליו), משוב מיידי ולמידה מבוססת נתונים כדי לשפר את חוויית הלמידה וההוראה.</td>
+</tr>
+<tr>
+<td data-label="שיעור">7</td>
+<td data-label="נושא">יזמות חינוכית ופיתוח מקצועי למורים</td>
+<td data-label="פירוט">עידוד מורים ליזמות חינוכית, פיתוח פרויקטים חדשניים, הדרכת מורים והנעתם להוראה חדשנית. הקמת קהילות למידה של מורים למען שיתוף והפצה של רעיונות חדשניים.</td>
+</tr>
+<tr>
+<td data-label="שיעור">8</td>
+<td data-label="נושא">ניהול שינוי והובלת חדשנות בבית הספר</td>
+<td data-label="פירוט">ניהול שינוי אפקטיבי בבתי ספר, יצירת תרבות חדשנית, שיטות להנעת צוותי מורים, והובלת פרויקטים חדשניים עם ראייה מערכתית.</td>
+</tr>
+<tr>
+<td data-label="שיעור">9</td>
+<td data-label="נושא">שילוב הורים וקהילה בתהליך החדשנות</td>
+<td data-label="פירוט">יצירת שותפויות עם הורים וקהילה בתהליך החדשנות, קידום פרויקטים קהילתיים בשיתוף עם התלמידים והורים. חדשנות על בסיס ביזור והרחבת מוטת הסמכות במסגרת החינוכית.</td>
+</tr>
+<tr>
+<td data-label="שיעור">10</td>
+<td data-label="נושא">סיכום ופרזנטציה של פרויקטים</td>
+<td data-label="פירוט">הצגת פרויקטים חדשניים שפותחו במהלך ההשתלמות, שיתוף רעיונות והצלחות, דיון אתגרים שהתעוררו במהלך היישום, ותכנון תוכניות המשך לפיתוח והטמעת חדשנות בבית הספר.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="section final-task">
+        <h2>מטלת סיום</h2>
+        <p>הגשת תוכנית פעולה לליווי או הקמה של פרויקט חדשנות בבית הספר הכולל 3 היבטים מרכזיים בהם עסקנו בקורס:</p>
+        <ol>
+            <li>הנחת התשתית הארגונית-חברתית-ערכית שבבסיס היכולת להניע למעשה חדשני.</li>
+            <li>תכנון הפרויקט כשילוב פדגוגי-דיגיטלי-חדשני.</li>
+            <li>הערכת הפרויקט בכלים הנלמדים בקורס.</li>
+        </ol>
+        <p>היקף: 2-3 עמודים.</p>
+    </section>
+
+    <section class="section bibliography">
+        <h2>ביבליוגרפיה</h2>
+        <ul>
+            <li>אורית אבידב-אונגר ומירב חיאק. (2021). חדשנות בהוראה: חקר מקרה של דפוסי אימוץ ושילוב משחק דיגיטלי בהוראה בקרב מורים. In חינוך כמערכת מורכבת (קובץ בעריכת ח'אלד עראר, גילה קורץ, חנה בר ישי) (pp. 569-592). פרדס.</li>
+            <li>אטינגר, ל. כיצד ניתן לחולל שינוי משמעותי ומתמשך בתרבות בית הספר? עלון "חינוך החשיבה" (18), סתיו 1999, עמ' 63-70.</li>
+            <li>חן, ד. (עורך), 2006, בתי-ספר ניסויים - בית היוצר לחדשנות בחינוך. רמות: אוניברסיטת תל-אביב.</li>
+            <li>מאיה בנישו. (2021). מדע אזרחי בבתי ספר: הכנסת חדשנות כמנוף להצמחת צוותי חינוך באקולוגיה של שותפות הדדית (Doctoral dissertation, University of Haifa (Israel)).</li>
+            <li>סופיה חודדטוב, אורית אבידב-אונגר ומירב חיאק. (2023). שילוב של משחק דיגיטלי בבתי ספר יסודיים: נקודת המבט של המנהלים (מאמר קצר). In האדם הלומד בעידן הדיגיטלי: ספר הכנס השמונה-עשר לחקר חדשנות וטכנולוגיות למידה ע"ש צ'ייס (pp. 111-115). האוניברסיטה הפתוחה.</li>
+        </ul>
+    </section>
+</div>
