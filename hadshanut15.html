@@ -240,10 +240,28 @@
 
         .final-task {
             background-color: var(--light-orange);
+            position: relative;
+            overflow: hidden;
         }
 
         .final-task ol {
             padding-right: 20px;
+        }
+
+        .final-task-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .final-task-content {
+            position: relative;
+            z-index: 1;
         }
 
         .bibliography ul {
