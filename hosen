@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פדגוגיה של חוסן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7f3f96;
+            --secondary-color: #fbaf43;
+            --background-color: #f9f4ff;
+            --text-color: #333;
+            --light-purple: #a77bb5;
+            --light-orange: #ffd699;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic background animation for header */
+        .dynamic-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .dynamic-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: move 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .dynamic-bg span:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .dynamic-bg span:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .dynamic-bg span:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .dynamic-bg span:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .dynamic-bg span:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .dynamic-bg span:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .dynamic-bg span:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .dynamic-bg span:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .dynamic-bg span:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .dynamic-bg span:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        .logo, h1 {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .goals {
+            background-color: var(--light-purple);
+            color: white;
+        }
+
+        .goals h3 {
+            color: var(--secondary-color);
+        }
+
+        .goals ul, .applications ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .goals li:before, .applications li:before {
+            content: '✓';
+            color: var(--secondary-color);
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .meetings table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .meetings th, .meetings td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: right;
+        }
+
+        .meetings th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .meetings tr:nth-child(even) {
+            background-color: var(--light-orange);
+        }
+
+        .meetings tr:hover {
+            background-color: #ffe0b3;
+        }
+
+        .background {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .background-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bibliography ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .bibliography li {
+            margin-bottom: 10px;
+            text-indent: -20px;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+
+            .meetings table, .meetings thead, .meetings tbody, .meetings th, .meetings td, .meetings tr {
+                display: block;
+                width: 100%;
+            }
+
+            .meetings thead {
+                display: none;
+            }
+
+            .meetings tr {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: white;
+                text-align: right;
+            }
+
+            .meetings td {
+                text-align: right;
+                padding-left: 10px;
+                padding-right: 10px;
+                display: block;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 10px;
+                word-wrap: break-word;
+                overflow: hidden;
+                width: auto;
+            }
+
+            .meetings td:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .meetings td:before {
+                content: attr(data-label) " ";
+                font-weight: bold;
+            }
+
+            .meetings tr:nth-child(even) {
+                background-color: var(--light-orange);
+            }
+
+            .meetings tr:nth-child(even) td {
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="dynamic-bg">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container">
+            <div style="display: inline-block; position: relative;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/%D7%9C%D7%95%D7%92%D7%95_%D7%94%D7%9E%D7%9B%D7%9C%D7%9C%D7%94_%D7%94%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%AA_%D7%97%D7%9E%D7%93%D7%AA_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F.png" 
+                     alt="לוגו המכללה האקדמית חמדת" 
+                     class="logo">
+            </div>
+            <h1>פדגוגיה של חוסן</h1>
+        </div>
+    </header>
+<div class="container">
+    <section class="section background">
+        <img src="https://img.freepik.com/free-photo/young-boy-having-fun-playground_23-2149490420.jpg" alt="רקע חוסן פדגוגי" class="background-image">
+        <div class="background-content">
+
+                <h2><i class="fas fa-info-circle"></i> רקע</h2>
+                <p>הקורס "פדגוגיה של חוסן" נבנה במטרה לסייע למורים להטמיע גישה חינוכית המשלבת חוסן אישי וחברתי כחלק מרכזי מהלמידה וההוראה. החוסן מוגדר כיכולת להתמודד עם אתגרים ולהמשיך לשאוף להצלחה והוא נבנה דרך תהליכי חינוך מתמשכים. במרכז הקורס עומדת ההבנה כי החוסן הוא לא רק יכולת מולדת אלא משהו שניתן לפתח באמצעות חינוך מותאם ותמיכה משמעותית.</p>
+                <p>המכון לפדגוגיה של חוסן שבאקדמית חמדת פיתח משנה ייחודית שמשלבת עקרונות חוסן בתהליכי הוראה ולמידה. תפיסה זו רואה במורים לא רק כמובילי ידע אלא גם כמנטורים לחיים המעצימים את תלמידיהם להתמודד עם אתגרי החיים בצורה מיטבית. במסגרת הקורס המורים יחשפו לכלים ושיטות עבודה שהמכון פיתח המשלבים תמיכה רגשית חברתית ואקדמית תוך שימוש במודלים חדשניים כמו "מודל התמיכה 360" ו"מנהיגות מבוזרת לשגשוג קבוצתי".</p>
+                <p>הקורס מובנה בצורה שתאפשר למורים להתחבר לעקרונות הפדגוגיה של חוסן דרך חוויות למידה פעילה מפגשים עם מודלים פרקטיים ותמיכה קהילתית. כל שיעור בקורס מציע שילוב בין תיאוריה ופרקטיקה ומעניק למורים כלים ליישום עקרונות החוסן בכיתותיהם תוך התמקדות בפיתוח תחושת שייכות מסוגלות וביטחון עצמי בקרב תלמידיהם. הקורס משלב גם תרגולים חדשניים ויומן מסע אישי שמטרתם לחזק את החוסן האישי של המורים עצמם ואת היכולת שלהם להוביל שינוי חינוכי משמעותי.</p>
+            </div>
+        </section>
+
+        <section class="section goals">
+            <h2><i class="fas fa-bullseye"></i> מטרות</h2>
+            <h3>הבנה והטמעת עקרונות הפדגוגיה של חוסן:</h3>
+            <p>הקורס מכוון להעניק למורים הבנה מעמיקה של עקרונות הפדגוגיה של חוסן הכוללת את החיבור בין תכני הלמידה לחוסן אישי וחברתי. המורים ילמדו כיצד לשלב עקרונות אלה בתהליכי הוראה ולמידה כדי לחזק את התלמידים לקראת אתגרי החיים.</p>
+            
+            <h3>פיתוח כישורים להוראה המעודדת חוסן באמצעות כלים חדשניים:</h3>
+            <p>המורים ירכשו כלים ושיטות הוראה חדשניות כמו "למידה עם תכלית" ו"חוסן דרך עמידות" המיועדות לפתח את היכולת של התלמידים להתמודד עם מצבי משבר ומורכבות תוך כדי חיזוק המסוגלות והעצמאות שלהם.</p>
+            
+            <h3>קידום חוסן מערכתי ותרבות כיתתית תומכת:</h3>
+            <p>הקורס שם דגש על פיתוח סביבה לימודית בטוחה ותומכת באמצעות כלים כמו "כיתה כמקלט בטוח" ו"אמפתיה והעצמה" במטרה לקדם תרבות כיתתית שמאפשרת לתלמידים לשגשג ולהתמודד עם מתחים חיצוניים ופנימיים בצורה מיטבית.</p>
+        </section>
+
+        <section class="section applications">
+            <h2><i class="fas fa-cogs"></i> יישומים פדגוגיים חינוכיים</h2>
+            <ul>
+                <li>פיתוח מערכי שיעור מותאמים לחוסן: המורים ייצרו מערכי שיעור המדגישים את החוסן האישי של התלמידים באמצעות תכנים מעשירים כמו תרגולי "למידה עם תכלית".</li>
+                <li>בניית סביבה כיתתית תומכת באמצעות פרקטיקות מבוססות חוסן: המורים יישמו פרקטיקות כמו "כיתה כמקלט בטוח" כדי ליצור סביבה לימודית המעודדת תחושת ביטחון ושייכות.</li>
+                <li>הטמעת שיטות הערכה מקדמות חוסן: המורים יפתחו ויישמו שיטות הערכה המעודדות שיפור מתמיד ומדגישות את ההתקדמות האישית של כל תלמיד כמו "חוסן דרך עמידות אקדמית".</li>
+            </ul>
+        </section>
+
+        <section class="section meetings">
+            <h2><i class="fas fa-calendar-alt"></i> פירוט המפגשים</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>שיעור</th>
+                        <th>נושא</th>
+                        <th>פירוט</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="שיעור">1</td>
+                        <td data-label="נושא">יסודות פדגוגיה של חוסן</td>
+                        <td data-label="פירוט">הגדרת חוסן כיכולת להסתגלות והתמודדות עם מצבים משבריים. פיתוח תפיסה חינוכית המשלבת הקניית ידע ומיומנויות לצד חיזוק החוסן האישי של התלמידים.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">2</td>
+                        <td data-label="נושא">למידה עם תכלית: חוסן אישי וחברתי</td>
+                        <td data-label="פירוט">שילוב תכנים לימודיים המתחברים למציאות חיי התלמידים ומדגישים מסרים של חוסן אישי וחברתי. פיתוח תכני למידה המעודדים עמידות התמדה והגשמת מטרות.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">3</td>
+                        <td data-label="נושא">חוסן דרך עמידות אקדמית</td>
+                        <td data-label="פירוט">שימוש בשיטות הוראה המקדמות חשיבה ביקורתית והרחבת עצמאות התלמידים. פיתוח עמידות אקדמית על ידי יצירת אתגרי למידה המדמים התמודדויות חיים אמיתיות.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">4</td>
+                        <td data-label="נושא">אמפתיה והעצמה: חוסן דרך קשרים אישיים</td>
+                        <td data-label="פירוט">יצירת קשרי מורה-תלמיד המבוססים על אמפתיה והעצמה אישית עם דגש על תמיכה רגשית והגברת תחושת המסוגלות והביטחון העצמי של התלמידים.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">5</td>
+                        <td data-label="נושא">מורים כמנטורים לחיים: חיזוק דרך תמיכה</td>
+                        <td data-label="פירוט">בניית תכנית מנטורינג הממוקדת בחיזוק אישי והתמודדות עם קשיים תוך מתן הכוונה לחיים ומוטיבציה להתגבר על מכשולים.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">6</td>
+                        <td data-label="נושא">מודל התמיכה הרב-תחומית 360</td>
+                        <td data-label="פירוט">יישום מודל תמיכה רב-תחומי הכולל תמיכה רגשית חברתית ואקדמית גריט מסוגלות ועוד עקרונות לתנועה ומוטיבציה.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">7</td>
+                        <td data-label="נושא">כיתה כמקלט בטוח: חוסן מול מתחים חיצוניים</td>
+                        <td data-label="פירוט">עיצוב מרחבי למידה המספקים תחושת ביטחון ושייכות במיוחד בתנאי מתיחות בטחונית. יצירת תרבות כיתתית שתומכת בהתמודדות עם אתגרים חיצוניים.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">8</td>
+                        <td data-label="נושא">ממשבר לצמיחה</td>
+                        <td data-label="פירוט">מצב משברי- מאפיינים מודל תיאורטי וכלים להתמודדות והתערבות במצבי קיצון.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">9</td>
+                        <td data-label="נושא">חוסן כמנוע לשינוי ארגוני</td>
+                        <td data-label="פירוט">הטמעת עקרונות הפדגוגיה של חוסן בתרבות הארגונית של בית הספר במטרה להוביל שינוי מערכתי ולחזק את החוסן של כלל הקהילה החינוכית.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="שיעור">10</td>
+                        <td data-label="נושא">שגרת חוסן</td>
+                        <td data-label="פירוט">פיתוח תכניות פעולה אסטרטגיות להטמעת הפדגוגיה של חוסן במערכת החינוך עם דגש על מדידה והערכה של השפעה ארוכת טווח על תלמידים מורים והקהילה.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section final-task">
+            <div class="final-task-content">
+                <h2><i class="fas fa-tasks"></i> מטלת סיום</h2>
+                <p>מטלה יישומית בהיקף של 2-3 עמודים הכוללת ישום וניתוח של עקרונות "פדגוגיה של חוסן" בכיתה שלך.</p>
+                <p>יש לכלול את המרכיבים הבאים: תיאור מערך שיעור או תכנית כיתתית, ניתוח יישום והערכת השפעה באמצעות הכלים שנלמדו בקורס, הפקת לקחים רפלקטיבית והצעות לשיפור.</p>
+                <p>יש לכלול התייחסות לקשר בין תיאוריות חוסן שנלמדו לבין פרקטיקה חינוכיות שיושמו בכיתה.</p>
+            </div>
+        </section>
+
+        <section class="section bibliography">
+            <h2><i class="fas fa-book"></i> ביבליוגרפיה</h2>
+            <ul>
+                <li>אהרן אנטנובסקי (1998) המודל הסלוטוגני כתיאוריה מכוונת בקידום הבריאות מגמות 1-2 170-181</li>
+                <li>אורן ארגז (2016) חינוך קונטמפלטיבי מודעות קשובה ופדגוגיות התבוננות: מבט־על גילוי דעת 9 71- 104</li>
+                <li>אנג'לה דאקוורת (2017) גריט תל אביב: מטר</li>
+                <li>לביא ת' ושות' (2006). הצעה להתערבות ממוקדת קצרת מועד במצבי חירום. אוחזר מתוך: https://cms.education.gov.il/EducationCMS/Units/Shefi/HerumLachatzMashber/herum/HitarvutMemukedetBeHerum.htm?wbc_purpose=Basic</li>
+                <li>מולי להד (1999)מודל החוסן הרב ממדי ושימושיו ברמת הפרט הקבוצה והארגון. אוחזר מתוך: https://cms.education.gov.il/EducationCMS/Units/Shefi/HerumLachatzMashber/herum/BasicPh.htm</li>
+                <li>מרטין סליגמן (2000) ילדות אופטימית תל אביב: עם עובד</li>
+                <li>אבי עשור(2004) בית ספר מצמיח: בית ספר התומך בצרכים נפשיים ומקדם קשב לעצמי ולאחר בתוך: בית הספר העתידני (עורך: רוני אבירם) מסדה. תל אביב.</li>
+                <li>אורית לוי-פלדמן(2020) ממחנך לחונך: המורה הטוב למאה העשרים ואחת גילוי דעת 16 43- 69</li>
+                <li>קלינגמן א'. התערבות מערכתית מונעת בעת אסון וטראומה. אוחזר מתוך: https://cms.education.gov.il/EducationCMS/Units/Shefi/HerumLachatzMashber/herum/ManuatAson.htm</li>
+                <li>מרדכי רוטנברג (2010) מבוא לפסיכולוגיה של הצמצום ראובן מס</li>
+                <li>Deci E. & Ryan R. (Eds.) (2002). Handbook of self-determination research. Rochester NY: University of Rochester Press</li>
+                <li>Farchi Moshe Gidron Yori (2010) The Effects of “Psychological Inoculation” Versus Ventilation on the Mental Resilience of Israeli Citizens Under Continuous War Stress The Journal of Nervous and Mental Disease 198 382-384</li>
+                <li>Richardson Glenn E. (2002). "The metatheory of resilience and resiliency". Journal of Clinical Psychology. 58 (3): 307–321</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
