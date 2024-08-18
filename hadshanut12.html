@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>רכזי חדשנות פדגוגית-חינוכית לעל-יסודי</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary-color: #7f3f96;
@@ -41,7 +42,6 @@
             overflow: hidden;
         }
 
-        /* Dynamic background animation for header */
         .dynamic-bg {
             position: absolute;
             top: 0;
@@ -57,7 +57,8 @@
             display: block;
             width: 20px;
             height: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+            border-radius: 50%;
             animation: move 25s linear infinite;
             bottom: -150px;
         }
@@ -182,6 +183,18 @@
             padding: 30px;
             margin-bottom: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section:hover {
@@ -226,7 +239,7 @@
         }
 
         .meetings th {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--light-purple));
             color: white;
         }
 
@@ -234,7 +247,7 @@
             background-color: var(--light-orange);
         }
 
-        .meetings tr:hover {
+        .meetings tr:hover td {
             background-color: #ffe0b3;
         }
 
@@ -255,6 +268,27 @@
             margin-bottom: 10px;
             text-indent: -20px;
             padding-right: 20px;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, var(--secondary-color), transparent);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .image-container {
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -342,21 +376,26 @@
                      alt="לוגו המכללה האקדמית חמדת" 
                      class="logo">
             </div>
-            <h1>רכזי חדשנות פדגוגית-חינוכית לעל-יסודי</h1>
+            <h1>
+                <span style="display: block; font-size: 0.5em; color: var(--secondary-color); margin-bottom: 10px;">קורס</span>
+                רכזי חדשנות פדגוגית-חינוכית
+                <span style="display: block; font-size: 0.7em; color: var(--secondary-color); margin-top: 10px;">לעל-יסודי</span>
+            </h1>
         </div>
     </header>
 
-
-
     <div class="container">
         <section class="section">
-            <h2>רקע</h2>
+            <h2><i class="fas fa-info-circle"></i> רקע</h2>
             <p>הקורס להכשרת רכזי חדשנות פדגוגית בבתי הספר, נועד לענות על הצורך הגובר ביצירת סביבה חינוכית חדשנית ופורצת דרך בבתי הספר העל-יסודיים, המתאימה למאה ה21. בעידן שבו הטכנולוגיה מתפתחת במהירות, והכישורים הנדרשים מתלמידים בשוק העבודה משתנים תדיר, ישנה חשיבות עליונה להכשיר מורים להוביל שינויים פדגוגיים ולהטמיע שיטות הוראה חדשות ויעילות.</p>
-            <p>הקורס מבוסס על גישות תיאורטיות עדכניות המשלבות את עקרונות הלמידה המבוזרת, החשיבה היצירתית והלמידה המותאמת אישית. בנוסף, הוא מתמקד בהיבטים הפרקטיים של יישום חדשנות פדגוגית בבתי הספר, כולל שימוש בטכנולוגיות מתקדמות, עיצוב סביבות למידה גמישות, פיתוח שיטות הערכה חלופיות וניהול פרויקטים חדשניים.</p>
+            <p>הקורס מבוסס על גישות תיאורטיות עדכניות המשלבות את עקרונות <span class="highlight">הלמידה המבוזרת</span>, <span class="highlight">החשיבה היצירתית</span> והלמידה המותאמת אישית. בנוסף, הוא מתמקד בהיבטים הפרקטיים של יישום חדשנות פדגוגית בבתי הספר, כולל שימוש בטכנולוגיות מתקדמות, עיצוב סביבות למידה גמישות, פיתוח שיטות הערכה חלופיות וניהול פרויקטים חדשניים.</p>
+            <div class="image-container">
+                <img src="URL_של_התמונה_מ_Freepik" alt="חדשנות פדגוגית">
+            </div>
         </section>
 
         <section class="section goals">
-            <h2>מטרות</h2>
+            <h2><i class="fas fa-bullseye"></i> מטרות</h2>
             <h3>הובלת חדשנות פדגוגית בבתי ספר על-יסודיים:</h3>
             <p>בקורס נלמד להוביל תהליכי שינוי חינוכיים מותאמים לצרכים הייחודיים של התלמידים והמורים. המשתתפים ילמדו ליזום פרויקטים חינוכיים חדשניים וליישם (ולהדריך) שיטות הוראה עדכניות בבית הספר שלהם.</p>
             
@@ -365,19 +404,25 @@
             
             <h3>חיזוק שיתוף הפעולה עם הורים וקהילה:</h3>
             <p>כדי ליצור סביבה חינוכית חדשנית, נדרשת תשתית חברתית-ערכית-קהילתית תומכת. המשתתפים ילמדו כיצד לשלב את ההורים והקהילה בפרויקטים חדשניים ולהבטיח מעורבות רחבה ומבוזרת בתהליך החינוכי.</p>
+            <div class="image-container">
+                <img src="URL_של_התמונה_מ_Freepik" alt="שיתוף פעולה בחינוך">
+            </div>
         </section>
 
         <section class="section applications">
-            <h2>יישומים פדגוגיים חינוכיים</h2>
+            <h2><i class="fas fa-cogs"></i> יישומים פדגוגיים חינוכיים</h2>
             <ul>
-                <li>עידוד תלמידים לעבוד על פרויקטים שיתופיים המדמים מצבי חיים אמיתיים ומפתחים כישורים מעשיים.</li>
+                <li>עידוד תלמידים לעבוד על <span class="highlight">פרויקטים שיתופיים</span> המדמים מצבי חיים אמיתיים ומפתחים כישורים מעשיים.</li>
                 <li>שימוש בשיטות חדשניות להוראה השוברות את מבנה הלמידה המסורתי.</li>
                 <li>תכנון למידה מותאמת אישית במרחבים גמישים וחדשניים.</li>
             </ul>
+            <div class="image-container">
+                <img src="URL_של_התמונה_מ_Freepik" alt="יישומים פדגוגיים חדשניים">
+            </div>
         </section>
 
         <section class="section meetings">
-            <h2>פירוט המפגשים</h2>
+            <h2><i class="fas fa-calendar-alt"></i> פירוט המפגשים</h2>
             <table>
                 <thead>
                     <tr>
@@ -442,7 +487,7 @@
         </section>
 
         <section class="section final-task">
-            <h2>מטלת סיום</h2>
+            <h2><i class="fas fa-tasks"></i> מטלת סיום</h2>
             <p>הגשת תוכנית פעולה לליווי או הקמה של פרויקט חדשנות בבית הספר הכולל 3 היבטים מרכזיים בהם עסקנו בקורס:</p>
             <ol>
                 <li>הנחת התשתית הארגונית-חברתית-ערכית שבבסיס היכולת להניע למעשה חדשני.</li>
@@ -450,11 +495,20 @@
                 <li>הערכת הפרויקט בכלים הנלמדים בקורס.</li>
             </ol>
             <p>היקף: 2-3 עמודים.</p>
+            <div class="image-container">
+                <img src="URL_של_התמונה_מ_Freepik" alt="מטלת סיום">
+            </div>
         </section>
 
         <section class="section bibliography">
-            <h2>ביבליוגרפיה</h2>
+            <h2><i class="fas fa-book"></i> ביבליוגרפיה</h2>
             <ul>
                 <li>אורית אבידב-אונגר ומירב חיאק. (2021). חדשנות בהוראה: חקר מקרה של דפוסי אימוץ ושילוב משחק דיגיטלי בהוראה בקרב מורים. In חינוך כמערכת מורכבת (קובץ בעריכת ח'אלד עראר, גילה קורץ, חנה בר ישי) (pp. 569-592). פרדס.</li>
                 <li>אטינגר, ל. כיצד ניתן לחולל שינוי משמעותי ומתמשך בתרבות בית הספר? עלון "חינוך החשיבה" (18), סתיו 1999, עמ' 63-70.</li>
-                <li>
+                <li>הרפז, י. (2012). המורה כמנהיג: מנהיגות חינוכית כתיאוריה וכפרקטיקה. הד החינוך, 87(2), 44-49.</li>
+                <li>שלסקי, ש. ואלפרט, ב. (2007). דרכים בכתיבת מחקר איכותני: מפירוק המציאות להבנייתה כטקסט. תל אביב: מכון מופ"ת.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
