@@ -22,7 +22,7 @@
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            overflow-x: hidden; /* מניעת גלילה אופקית */
         }
 
         .container {
@@ -41,110 +41,30 @@
             overflow: hidden;
         }
 
-        .dynamic-bg {
+        header::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.7;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.1) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            animation: move-background 60s linear infinite;
+            z-index: 0;
         }
 
-        .dynamic-bg span {
-            position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            animation: move 25s linear infinite;
-            bottom: -150px;
-        }
-
-        .dynamic-bg span:nth-child(1) {
-            left: 25%;
-            width: 80px;
-            height: 80px;
-            animation-delay: 0s;
-        }
-
-        .dynamic-bg span:nth-child(2) {
-            left: 10%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 2s;
-            animation-duration: 12s;
-        }
-
-        .dynamic-bg span:nth-child(3) {
-            left: 70%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 4s;
-        }
-
-        .dynamic-bg span:nth-child(4) {
-            left: 40%;
-            width: 60px;
-            height: 60px;
-            animation-delay: 0s;
-            animation-duration: 18s;
-        }
-
-        .dynamic-bg span:nth-child(5) {
-            left: 65%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 0s;
-        }
-
-        .dynamic-bg span:nth-child(6) {
-            left: 75%;
-            width: 110px;
-            height: 110px;
-            animation-delay: 3s;
-        }
-
-        .dynamic-bg span:nth-child(7) {
-            left: 35%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 7s;
-        }
-
-        .dynamic-bg span:nth-child(8) {
-            left: 50%;
-            width: 25px;
-            height: 25px;
-            animation-delay: 15s;
-            animation-duration: 45s;
-        }
-
-        .dynamic-bg span:nth-child(9) {
-            left: 20%;
-            width: 15px;
-            height: 15px;
-            animation-delay: 2s;
-            animation-duration: 35s;
-        }
-
-        .dynamic-bg span:nth-child(10) {
-            left: 85%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 0s;
-            animation-duration: 11s;
-        }
-
-        @keyframes move {
+        @keyframes move-background {
             0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-                border-radius: 0;
+                transform: translate(0, 0);
             }
             100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-                border-radius: 50%;
+                transform: translate(100%, 100%);
             }
         }
 
@@ -166,24 +86,157 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* שאר הסגנונות נשארים ללא שינוי */
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
 
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .goals {
+            background-color: var(--light-purple);
+            color: white;
+        }
+
+        .goals h3 {
+            color: var(--secondary-color);
+        }
+
+        .goals ul, .applications ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .goals li:before, .applications li:before {
+            content: '✓';
+            color: var(--secondary-color);
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .meetings table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .meetings th, .meetings td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: right;
+            border-radius: 8px; /* הוספת פינות מעוגלות */
+            -webkit-border-radius: 8px; /* תמיכה בדפדפנים ישנים */
+            -moz-border-radius: 8px; /* תמיכה בדפדפנים ישנים */
+        }
+
+        .meetings th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .meetings tr:nth-child(even) {
+            background-color: var(--light-orange);
+        }
+
+        .meetings tr:hover {
+            background-color: #ffe0b3;
+        }
+
+        .final-task {
+            background-color: var(--light-orange);
+        }
+
+        .final-task ol {
+            padding-right: 20px;
+        }
+
+        .bibliography ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .bibliography li {
+            margin-bottom: 10px;
+            text-indent: -20px;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+
+            .meetings table, .meetings thead, .meetings tbody, .meetings th, .meetings td, .meetings tr {
+                display: block;
+                width: 100%;
+            }
+
+            .meetings thead {
+                display: none;
+            }
+
+            .meetings tr {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: white;
+                text-align: right;
+            }
+
+            .meetings td {
+                text-align: right;
+                padding-left: 10px;
+                padding-right: 10px;
+                display: block;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 10px;
+                word-wrap: break-word;
+                overflow: hidden; /* מונע חיתוך טקסט */
+                border-radius: 8px; /* פינות מעוגלות גם בתצוגת מובייל */
+            }
+
+            .meetings td:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .meetings td:before {
+                content: attr(data-label) " ";
+                font-weight: bold;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="dynamic-bg">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
         <div class="container">
             <div style="display: inline-block; position: relative;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/%D7%9C%D7%95%D7%92%D7%95_%D7%94%D7%9E%D7%9B%D7%9C%D7%9C%D7%94_%D7%94%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%AA_%D7%97%D7%9E%D7%93%D7%AA_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F.png" 
@@ -193,7 +246,6 @@
             <h1>רכזי חדשנות פדגוגית-חינוכית לעל-יסודי</h1>
         </div>
     </header>
-
 
     <div class="container">
         <section class="section">
@@ -304,11 +356,4 @@
             <ul>
                 <li>אורית אבידב-אונגר ומירב חיאק. (2021). חדשנות בהוראה: חקר מקרה של דפוסי אימוץ ושילוב משחק דיגיטלי בהוראה בקרב מורים. In חינוך כמערכת מורכבת (קובץ בעריכת ח'אלד עראר, גילה קורץ, חנה בר ישי) (pp. 569-592). פרדס.</li>
                 <li>אטינגר, ל. כיצד ניתן לחולל שינוי משמעותי ומתמשך בתרבות בית הספר? עלון "חינוך החשיבה" (18), סתיו 1999, עמ' 63-70.</li>
-                <li>חן, ד. (עורך), 2006, בתי-ספר ניסויים - בית היוצר לחדשנות בחינוך. רמות: אוניברסיטת תל-אביב.</li>
-                <li>מאיה בנישו. (2021). מדע אזרחי בבתי ספר: הכנסת חדשנות כמנוף להצמחת צוותי חינוך באקולוגיה של שותפות הדדית (Doctoral dissertation, University of Haifa (Israel)).</li>
-                <li>סופיה חודדטוב, אורית אבידב-אונגר ומירב חיאק. (2023). שילוב של משחק דיגיטלי בבתי ספר יסודיים: נקודת המבט של המנהלים (מאמר קצר). In האדם הלומד בעידן הדיגיטלי: ספר הכנס השמונה-עשר לחקר חדשנות וטכנולוגיות למידה ע"ש צ'ייס (pp. 111-115). האוניברסיטה הפתוחה.</li>
-            </ul>
-        </section>
-    </div>
-</body>
-</html>
+                <li>
