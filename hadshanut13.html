@@ -63,81 +63,6 @@
             bottom: -150px;
         }
 
-        .dynamic-bg span:nth-child(1) {
-            left: 25%;
-            width: 80px;
-            height: 80px;
-            animation-delay: 0s;
-        }
-
-        .dynamic-bg span:nth-child(2) {
-            left: 10%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 2s;
-            animation-duration: 12s;
-        }
-
-        .dynamic-bg span:nth-child(3) {
-            left: 70%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 4s;
-        }
-
-        .dynamic-bg span:nth-child(4) {
-            left: 40%;
-            width: 60px;
-            height: 60px;
-            animation-delay: 0s;
-            animation-duration: 18s;
-        }
-
-        .dynamic-bg span:nth-child(5) {
-            left: 65%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 0s;
-        }
-
-        .dynamic-bg span:nth-child(6) {
-            left: 75%;
-            width: 110px;
-            height: 110px;
-            animation-delay: 3s;
-        }
-
-        .dynamic-bg span:nth-child(7) {
-            left: 35%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 7s;
-        }
-
-        .dynamic-bg span:nth-child(8) {
-            left: 50%;
-            width: 25px;
-            height: 25px;
-            animation-delay: 15s;
-            animation-duration: 45s;
-        }
-
-        .dynamic-bg span:nth-child(9) {
-            left: 20%;
-            width: 15px;
-            height: 15px;
-            animation-delay: 2s;
-            animation-duration: 35s;
-        }
-
-        .dynamic-bg span:nth-child(10) {
-            left: 85%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 0s;
-            animation-duration: 11s;
-        }
-
         @keyframes move {
             0% {
                 transform: translateY(0) rotate(0deg);
@@ -277,17 +202,13 @@
             display: inline-block;
         }
 
-        .image-container {
-            max-width: 300px;
-            margin: 20px auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .image-container img {
+        .main-image {
             width: 100%;
+            max-width: 600px;
             height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px auto;
             display: block;
         }
 
@@ -376,37 +297,28 @@
                      alt="לוגו המכללה האקדמית חמדת" 
                      class="logo">
             </div>
-            <h1>
-                <span style="display: block; font-size: 0.5em; color: var(--secondary-color); margin-bottom: 10px;">קורס</span>
-                רכזי חדשנות פדגוגית-חינוכית
-                <span style="display: block; font-size: 0.7em; color: var(--secondary-color); margin-top: 10px;">לעל-יסודי</span>
-            </h1>
+            <h1>רכזי חדשנות פדגוגית-חינוכית לעל-יסודי</h1>
         </div>
     </header>
 
     <div class="container">
         <section class="section">
             <h2><i class="fas fa-info-circle"></i> רקע</h2>
-            <p>הקורס להכשרת רכזי חדשנות פדגוגית בבתי הספר, נועד לענות על הצורך הגובר ביצירת סביבה חינוכית חדשנית ופורצת דרך בבתי הספר העל-יסודיים, המתאימה למאה ה21. בעידן שבו הטכנולוגיה מתפתחת במהירות, והכישורים הנדרשים מתלמידים בשוק העבודה משתנים תדיר, ישנה חשיבות עליונה להכשיר מורים להוביל שינויים פדגוגיים ולהטמיע שיטות הוראה חדשות ויעילות.</p>
+            <p>הקורס להכשרת רכזי חדשנות פדגוגית בבתי הספר, נועד לענות על הצורך הגובר ביצירת <span class="highlight">סביבה חינוכית חדשנית ופורצת דרך</span> בבתי הספר העל-יסודיים, המתאימה למאה ה21. בעידן שבו הטכנולוגיה מתפתחת במהירות, והכישורים הנדרשים מתלמידים בשוק העבודה משתנים תדיר, ישנה חשיבות עליונה להכשיר מורים להוביל שינויים פדגוגיים ולהטמיע שיטות הוראה חדשות ויעילות.</p>
             <p>הקורס מבוסס על גישות תיאורטיות עדכניות המשלבות את עקרונות <span class="highlight">הלמידה המבוזרת</span>, <span class="highlight">החשיבה היצירתית</span> והלמידה המותאמת אישית. בנוסף, הוא מתמקד בהיבטים הפרקטיים של יישום חדשנות פדגוגית בבתי הספר, כולל שימוש בטכנולוגיות מתקדמות, עיצוב סביבות למידה גמישות, פיתוח שיטות הערכה חלופיות וניהול פרויקטים חדשניים.</p>
-            <div class="image-container">
-                <img src="URL_של_התמונה_מ_Freepik" alt="חדשנות פדגוגית">
-            </div>
+            <img src="https://img.freepik.com/free-photo/close-up-boy-playing-with-lights_23-2150814465.jpg" alt="חדשנות פדגוגית" class="main-image">
         </section>
 
         <section class="section goals">
             <h2><i class="fas fa-bullseye"></i> מטרות</h2>
             <h3>הובלת חדשנות פדגוגית בבתי ספר על-יסודיים:</h3>
-            <p>בקורס נלמד להוביל תהליכי שינוי חינוכיים מותאמים לצרכים הייחודיים של התלמידים והמורים. המשתתפים ילמדו ליזום פרויקטים חינוכיים חדשניים וליישם (ולהדריך) שיטות הוראה עדכניות בבית הספר שלהם.</p>
+            <p>בקורס נלמד להוביל <span class="highlight">תהליכי שינוי חינוכיים</span> מותאמים לצרכים הייחודיים של התלמידים והמורים. המשתתפים ילמדו ליזום פרויקטים חינוכיים חדשניים וליישם (ולהדריך) שיטות הוראה עדכניות בבית הספר שלהם.</p>
             
             <h3>שימוש בטכנולוגיות מתקדמות לשיפור ההוראה:</h3>
-            <p>הקורס מעניק כלים לשילוב טכנולוגיות כמו מערכות לניהול למידה, הוראה מרחוק וכלים/גישות דיגיטלים נוספים לשיפור חוויית הלמידה וההוראה. המורים ילמדו כיצד להשתמש בטכנולוגיות אלה כדי להגביר את מעורבות התלמידים ולשפר את הישגיהם.</p>
+            <p>הקורס מעניק כלים לשילוב טכנולוגיות כמו <span class="highlight">מערכות לניהול למידה</span>, הוראה מרחוק וכלים/גישות דיגיטלים נוספים לשיפור חוויית הלמידה וההוראה. המורים ילמדו כיצד להשתמש בטכנולוגיות אלה כדי להגביר את מעורבות התלמידים ולשפר את הישגיהם.</p>
             
             <h3>חיזוק שיתוף הפעולה עם הורים וקהילה:</h3>
-            <p>כדי ליצור סביבה חינוכית חדשנית, נדרשת תשתית חברתית-ערכית-קהילתית תומכת. המשתתפים ילמדו כיצד לשלב את ההורים והקהילה בפרויקטים חדשניים ולהבטיח מעורבות רחבה ומבוזרת בתהליך החינוכי.</p>
-            <div class="image-container">
-                <img src="URL_של_התמונה_מ_Freepik" alt="שיתוף פעולה בחינוך">
-            </div>
+            <p>כדי ליצור סביבה חינוכית חדשנית, נדרשת <span class="highlight">תשתית חברתית-ערכית-קהילתית תומכת</span>. המשתתפים ילמדו כיצד לשלב את ההורים והקהילה בפרויקטים חדשניים ולהבטיח מעורבות רחבה ומבוזרת בתהליך החינוכי.</p>
         </section>
 
         <section class="section applications">
@@ -414,11 +326,8 @@
             <ul>
                 <li>עידוד תלמידים לעבוד על <span class="highlight">פרויקטים שיתופיים</span> המדמים מצבי חיים אמיתיים ומפתחים כישורים מעשיים.</li>
                 <li>שימוש בשיטות חדשניות להוראה השוברות את מבנה הלמידה המסורתי.</li>
-                <li>תכנון למידה מותאמת אישית במרחבים גמישים וחדשניים.</li>
+                <li>תכנון <span class="highlight">למידה מותאמת אישית</span> במרחבים גמישים וחדשניים.</li>
             </ul>
-            <div class="image-container">
-                <img src="URL_של_התמונה_מ_Freepik" alt="יישומים פדגוגיים חדשניים">
-            </div>
         </section>
 
         <section class="section meetings">
