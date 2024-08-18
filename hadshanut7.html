@@ -44,10 +44,10 @@
         header::before {
             content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: repeating-linear-gradient(
                 45deg,
                 rgba(255, 255, 255, 0.2),
@@ -56,15 +56,14 @@
                 transparent 40px
             );
             animation: move-background 60s linear infinite;
-            z-index: 0;
         }
 
         @keyframes move-background {
             0% {
-                transform: translate(0, 0);
+                background-position: 0 0;
             }
             100% {
-                transform: translate(-50%, -50%);
+                background-position: 1000px 1000px;
             }
         }
 
@@ -217,6 +216,7 @@
                 margin-bottom: 10px;
                 word-wrap: break-word;
                 overflow: hidden;
+                width: auto;
             }
 
             .meetings td:last-child {
@@ -227,6 +227,14 @@
             .meetings td:before {
                 content: attr(data-label) " ";
                 font-weight: bold;
+            }
+
+            .meetings tr:nth-child(even) {
+                background-color: var(--light-orange);
+            }
+
+            .meetings tr:nth-child(even) td {
+                background-color: transparent;
             }
         }
     </style>
