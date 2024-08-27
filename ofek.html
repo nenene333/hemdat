@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון שעות פיתוח מקצועי למורי אופק חדש</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://nenene333.github.io/hebrew-english-game/reka.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #803e96;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #fbaf43;
+            font-size: 1em;
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            color: #803e96;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 2px solid #fbaf43;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #803e96;
+            box-shadow: 0 0 0 3px rgba(128, 62, 150, 0.2);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: #803e96;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fbaf43;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(251, 175, 67, 0.3);
+        }
+
+        #result {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(251, 175, 67, 0.1);
+            border: 2px solid #fbaf43;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        #result.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #result p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        #result i {
+            margin-left: 10px;
+            color: #803e96;
+            font-size: 1.2em;
+            min-width: 25px;
+        }
+
+        #lottieContainer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            z-index: 1000;
+            display: none;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        #adContainer {
+            display: none;
+            background-color: #803e96;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+
+        #adContainer img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        #adContainer:hover {
+            background-color: #fbaf43;
+            color: #803e96;
+            box-shadow: 0 4px 10px rgba(251, 175, 67, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 0.9em;
+            }
+
+            input, select, button {
+                font-size: 14px;
+            }
+
+            #adContainer img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>מחשבון שעות פיתוח מקצועי</h1>
+        <h2>שימו לב, מחשבון זה נועד לבדוק את כמות השעות הנדרשות והמוכרות לצורך קידום בדרגות ברפורמת "אופק חדש" בלבד ובשנת שבתון בלבד.</h2>
+        <form id="calculatorForm">
+            <label for="currentGrade">מה הדרגה הנוכחית שלך?</label>
+            <select id="currentGrade" required>
+                <option value="">בחר דרגה</option>
+                <option value="1">1</option>
+                <option value="1+">1+</option>
+                <option value="2">2</option>
+                <option value="2+">2+</option>
+                <option value="3">3</option>
+                <option value="3+">3+</option>
+                <option value="4">4</option>
+                <option value="4+">4+</option>
+                <option value="5">5</option>
+                <option value="5+">5+</option>
+                <option value="6">6</option>
+                <option value="6+">6+</option>
+                <option value="7">7</option>
+                <option value="7+">7+</option>
+                <option value="8">8</option>
+                <option value="8+">8+</option>
+                <option value="9">9</option>
+            </select>
+
+            <label for="previousHours">כמה שעות פיתוח מקצועי צברת לפני השנה הנוכחית?</label>
+            <input type="number" id="previousHours" min="0" required>
+
+            <label for="currentHours">כמה שעות פיתוח מקצועי צברת השנה בשנת השבתון?</label>
+            <input type="number" id="currentHours" min="0" required>
+
+            <label for="monthsPassed">כמה חודשים עברו מאז עליית הדרגה האחרונה?</label>
+            <input type="number" id="monthsPassed" min="0" required>
+
+            <button type="submit">חשב תוצאות</button>
+        </form>
+
+        <div id="lottieContainer"></div>
+        <div id="result"></div>
+       <a href="https://wa.me/972553183073" id="adContainer">
+    <img src="https://nenene333.github.io/hebrew-english-game/whatsapp.gif" alt="WhatsApp">
+    <p>חשוב לך לקבל יעוץ אישי ולשאול עוד שאלות?<br>יועצת הלימודים של האקדמית חמדת לרשותך בווצאפ ובטלפון</p>
+    <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">055-318-30-73</p>
+    <p>לחצו כאן לשליחת הודעת ווצאפ</p>
+</a>
+    </div>
+
+<script>
+        const gradeData = {
+            "1": {hours: 120, months: 30},
+            "1+": {hours: 60, months: 15},
+            "2": {hours: 120, months: 30},
+            "2+": {hours: 60, months: 15},
+            "3": {hours: 180, months: 36},
+            "3+": {hours: 90, months: 18},
+            "4": {hours: 180, months: 36},
+            "4+": {hours: 90, months: 18},
+            "5": {hours: 180, months: 36},
+            "5+": {hours: 90, months: 18},
+            "6": {hours: 210, months: 48},
+            "6+": {hours: 105, months: 24},
+            "7": {hours: 210, months: 48},
+            "7+": {hours: 105, months: 24},
+            "8": {hours: 210, months: 48},
+            "8+": {hours: 105, months: 24},
+            "9": {hours: 0, months: 0}  // Final grade
+        };
+
+        const grades = ["1", "1+", "2", "2+", "3", "3+", "4", "4+", "5", "5+", "6", "6+", "7", "7+", "8", "8+", "9"];
+
+        let animation;
+
+        function loadAnimation() {
+            animation = lottie.loadAnimation({
+                container: document.getElementById('lottieContainer'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: false,
+                path: 'https://nenene333.github.io/hebrew-english-game/nnn.json'
+            });
+        }
+
+        function playAnimation() {
+            const lottieContainer = document.getElementById('lottieContainer');
+            lottieContainer.style.display = 'block';
+            animation.play();
+
+            setTimeout(() => {
+                lottieContainer.style.opacity = '0';
+                setTimeout(() => {
+                    lottieContainer.style.display = 'none';
+                    showResult();
+                    showAd();
+                }, 500);
+            }, 2000);
+        }
+
+        function showResult() {
+            document.getElementById('result').classList.add('show');
+        }
+
+        function showAd() {
+            const adContainer = document.getElementById('adContainer');
+            setTimeout(() => {
+                adContainer.style.display = 'block';
+                adContainer.style.opacity = '1';
+            }, 2000);
+        }
+
+        function getNextGrade(currentGrade) {
+            const currentIndex = grades.indexOf(currentGrade);
+            if (currentIndex === -1 || currentIndex === grades.length - 1) {
+                return null;  // Invalid grade or already at the highest grade
+            }
+            if (currentGrade.endsWith('+')) {
+                return grades[currentIndex + 1];
+            } else {
+                for (let i = currentIndex + 1; i < grades.length; i++) {
+                    if (!grades[i].endsWith('+')) {
+                        return grades[i];
+                    }
+                }
+            }
+            return null;  // No next grade found
+        }
+
+        function getNextFullGrade(currentGrade) {
+            return getNextGrade(currentGrade);
+        }
+
+        function getHebrewYear(date) {
+            const hebrewYears = ['תשפ"ג', 'תשפ"ד', 'תשפ"ה', 'תשפ"ו', 'תשפ"ז', 'תשפ"ח', 'תשפ"ט', 'תש"צ', 'תשצ"א', 'תשצ"ב'];
+            const startYear = 2022;  // תשפ"ג started in 2022
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            if (month < 8) {
+                return hebrewYears[year - startYear - 1];
+            } else {
+                return hebrewYears[year - startYear];
+            }
+        }
+
+        function calculateFutureDate(monthsRemaining) {
+            const today = new Date();
+            let futureDate = new Date(today);
+            futureDate.setMonth(futureDate.getMonth() + monthsRemaining);
+            futureDate.setDate(1);
+            return futureDate;
+        }
+
+        function formatDate(date) {
+            return date.getDate().toString().padStart(2, '0') + '/' +
+                   (date.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                   date.getFullYear();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAnimation);
+
+        document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const currentGrade = document.getElementById('currentGrade').value;
+            const previousHours = parseInt(document.getElementById('previousHours').value);
+            const currentHours = parseInt(document.getElementById('currentHours').value);
+            const monthsPassed = parseInt(document.getElementById('monthsPassed').value);
+
+            const nextGrade = getNextGrade(currentGrade);
+            if (!nextGrade) {
+                document.getElementById('result').innerHTML = '<p><i class="fas fa-star"></i>אתה כבר בדרגה הגבוהה ביותר!</p>';
+                playAnimation();
+                return;
+            }
+
+            const requiredHours = gradeData[currentGrade].hours;
+            const requiredMonths = gradeData[currentGrade].months;
+            const totalHours = previousHours + currentHours;
+            const hoursForNextGrade = Math.min(totalHours, requiredHours);
+            const missingHours = Math.max(0, requiredHours - totalHours);
+            let remainingHours = totalHours - hoursForNextGrade;
+
+            const maxCarryOver = Math.max(60, Math.floor(requiredHours / 2));
+            const carryOverHours = Math.min(remainingHours, maxCarryOver);
+
+            let resultHTML = `
+                <p><i class="fas fa-clock"></i>${hoursForNextGrade} שעות נצברו לך עבור עליה לדרגה הבאה (דרגה ${nextGrade})`;
+
+            if (missingHours > 0) {
+                resultHTML += `, ועליך ללמוד עוד ${missingHours} שעות כדי להגיע ל-${requiredHours} השעות הנדרשות להשלמת הדרגה.`;
+            } else {
+                resultHTML += `. השלמת את כל השעות הנדרשות לדרגה זו.`;
+            }
+            resultHTML += `</p>`;
+
+            if (nextGrade !== "9") {
+                const afterNextGrade = getNextFullGrade(nextGrade);
+                if (afterNextGrade) {
+                    resultHTML += `<p><i class="fas fa-forward"></i>${carryOverHours} שעות נגררות לך לדרגה ${nextGrade} לצורך עליה לדרגה ${afterNextGrade}.</p>`;
+                } else {
+                    resultHTML += `<p><i class="fas fa-forward"></i>${carryOverHours} שעות נגררות לך לדרגה ${nextGrade}, אך זו כבר הדרגה הגבוהה ביותר.</p>`;
+                }
+            } else {
+                resultHTML += `<p><i class="fas fa-check-circle"></i>אין צורך בצבירת שעות נוספות מעבר לדרגה 9.</p>`;
+            }
+
+            if (remainingHours > carryOverHours) {
+                const unusedHours = remainingHours - carryOverHours;
+                resultHTML += `<p><i class="fas fa-exclamation-triangle"></i>לתשומת לבך: ${unusedHours} שעות נוספות לא ניתן לגרור לדרגה הבאה, כיוון שהם מעבר למכסה המותרת לגרירה. שעות אלו לא יוכרו כחלק מתהליך ההתקדמות בדרגות שלך לצערנו.</p>`;
+            }
+
+            if (currentHours < 30) {
+                resultHTML += `<p><i class="fas fa-exclamation-circle"></i>שים לב: עליך ללמוד לפחות 30 שעות בשנה. חסרות לך עוד ${30 - currentHours} שעות השנה.</p>`;
+            }
+
+            const remainingMonths = Math.max(0, requiredMonths - monthsPassed);
+            const today = new Date();
+            const formattedToday = formatDate(today);
+            if (remainingMonths > 0) {
+                const futureDate = calculateFutureDate(remainingMonths);
+                const futureSchoolYear = getHebrewYear(futureDate);
+                resultHTML += `<p><i class="fas fa-hourglass-half"></i>עד לעליית הדרגה הבאה, עליך גם להמתין עוד ${remainingMonths} חודשים, כדי להשלים את ${requiredMonths} החודשים הנדרשים להשלמת הפז"ן של הדרגה.</p>`;
+                resultHTML += `<p><i class="fas fa-calendar-alt"></i>שים לב: התאריך היום הוא ${formattedToday}, ולכן העליה לדרגה ${nextGrade} תתרחש בשנת הלימודים ${futureSchoolYear}. על אף שצברת את כל השעות הנדרשות לעליה בדרגה, עדיין עליך ללמוד 30 שעות בכל שנת לימודים עד אז, כחלק מעיקרון הרצף המחייב כל מורה ללמוד 30 שעות בשנה לכל הפחות.</p>`;
+            } else {
+                resultHTML += `<p><i class="fas fa-check"></i>לצורך עליה לדרגה ${nextGrade}, נדרשים ${requiredMonths} חודשי פז"ן. השלמת את כל חודשי הפז"ן הנדרשים. כל הכבוד!</p>`;
+            }
+
+            document.getElementById('result').innerHTML = resultHTML;
+            playAnimation();
+        });
+    </script>
+</body>
+</html>
