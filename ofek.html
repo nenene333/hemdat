@@ -233,12 +233,13 @@
 
         <div id="lottieContainer"></div>
         <div id="result"></div>
-       <a href="https://wa.me/972553183073" id="adContainer">
-    <img src="https://nenene333.github.io/hebrew-english-game/whatsapp.gif" alt="WhatsApp">
-    <p>חשוב לך לקבל יעוץ אישי ולשאול עוד שאלות?<br>יועצת הלימודים של האקדמית חמדת לרשותך בווצאפ ובטלפון</p>
-    <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">055-318-30-73</p>
-    <p>לחצו כאן לשליחת הודעת ווצאפ</p>
-</a>
+
+        <a href="https://wa.me/972553183073" id="adContainer">
+            <img src="https://nenene333.github.io/hebrew-english-game/whatsapp.gif" alt="WhatsApp">
+            <p>חשוב לך לקבל יעוץ אישי ולשאול עוד שאלות?<br>יועצת הלימודים של האקדמית חמדת לרשותך בווצאפ ובטלפון</p>
+            <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">055-318-30-73</p>
+            <p>לחצו כאן לשליחת הודעת ווצאפ</p>
+        </a>
     </div>
 
 <script>
@@ -416,9 +417,17 @@
                 const futureSchoolYear = getHebrewYear(futureDate);
                 resultHTML += `<p><i class="fas fa-hourglass-half"></i>עד לעליית הדרגה הבאה, עליך גם להמתין עוד ${remainingMonths} חודשים, כדי להשלים את ${requiredMonths} החודשים הנדרשים להשלמת הפז"ן של הדרגה.</p>`;
                 resultHTML += `<p><i class="fas fa-calendar-alt"></i>שים לב: התאריך היום הוא ${formattedToday}, ולכן העליה לדרגה ${nextGrade} תתרחש בשנת הלימודים ${futureSchoolYear}. על אף שצברת את כל השעות הנדרשות לעליה בדרגה, עדיין עליך ללמוד 30 שעות בכל שנת לימודים עד אז, כחלק מעיקרון הרצף המחייב כל מורה ללמוד 30 שעות בשנה לכל הפחות.</p>`;
+
             } else {
                 resultHTML += `<p><i class="fas fa-check"></i>לצורך עליה לדרגה ${nextGrade}, נדרשים ${requiredMonths} חודשי פז"ן. השלמת את כל חודשי הפז"ן הנדרשים. כל הכבוד!</p>`;
             }
+
+            // הוספת הודעת האזהרה
+            resultHTML += `
+                <p style="color: red; display: flex; align-items: flex-start;">
+                    <i class="fas fa-exclamation-triangle" style="margin-left: 10px; color: red;"></i>
+                    לתשומת לבך, יתכנו טעויות במחשבון זה, באחריותך לוודא את תקינות התשובה ואת הנהלים הנוגעים אליך אל מול הגורמים המוסמכים לכך במשרד החינוך.
+                </p>`;
 
             document.getElementById('result').innerHTML = resultHTML;
             playAnimation();
