@@ -235,6 +235,13 @@
             <label for="monthsPassed">כמה חודשים עברו מאז עליית הדרגה האחרונה?</label>
             <input type="number" id="monthsPassed" min="0" required>
 
+            <label for="workedDuringSabbatical">האם עבדת בשנת השבתון הזו שליש משרה או יותר בבית הספר בתקן?</label>
+            <select id="workedDuringSabbatical" required>
+                <option value="">בחר תשובה</option>
+                <option value="yes">כן</option>
+                <option value="no">לא</option>
+            </select>
+
             <button type="submit">חשב תוצאות</button>
         </form>
 
@@ -249,7 +256,7 @@
         </a>
     </div>
 
-<script>
+    <script>
         const gradeData = {
             "1": {hours: 120, months: 30},
             "1+": {hours: 60, months: 15},
@@ -345,7 +352,7 @@
             }
         }
 
-        function calculateFutureDate(monthsRemaining) {
+function calculateFutureDate(monthsRemaining) {
             const today = new Date();
             let futureDate = new Date(today);
             futureDate.setMonth(futureDate.getMonth() + monthsRemaining);
@@ -367,7 +374,8 @@
             const currentGrade = document.getElementById('currentGrade').value;
             const previousHours = parseInt(document.getElementById('previousHours').value);
             const currentHours = parseInt(document.getElementById('currentHours').value);
-            const monthsPassed = parseInt(document.getElementById('monthsPassed').value);
+            let monthsPassed = parseInt(document.getElementById('monthsPassed').value);
+            const workedDuringSabbatical = document.getElementById('workedDuringSabbatical').value;
 
             const nextGrade = getNextGrade(currentGrade);
             if (!nextGrade) {
@@ -416,6 +424,13 @@
                 resultHTML += `<p><i class="fas fa-exclamation-circle"></i>שים לב: עליך ללמוד לפחות 30 שעות בשנה. חסרות לך עוד ${30 - currentHours} שעות השנה.</p>`;
             }
 
+            if (workedDuringSabbatical === 'no' && monthsPassed >= 6) {
+                monthsPassed -= 6;
+                resultHTML += `<p><i class="fas fa-info-circle"></i>כיוון שלא עבדת שליש משרה או יותר בשנת השבתון, היא נספרת רק כ-6 חודשי פז"ן.</p>`;
+            } else if (workedDuringSabbatical === 'yes') {
+                resultHTML += `<p><i class="fas fa-info-circle"></i>החודשים של שנה זו, שנת השבתון, נספרים לך באופן מלא כחודשי פז"ן, כיוון שעבדת שליש משרה או יותר.</p>`;
+            }
+
             const remainingMonths = Math.max(0, requiredMonths - monthsPassed);
             const today = new Date();
             const formattedToday = formatDate(today);
@@ -424,12 +439,10 @@
                 const futureSchoolYear = getHebrewYear(futureDate);
                 resultHTML += `<p><i class="fas fa-hourglass-half"></i>עד לעליית הדרגה הבאה, עליך גם להמתין עוד ${remainingMonths} חודשים, כדי להשלים את ${requiredMonths} החודשים הנדרשים להשלמת הפז"ן של הדרגה.</p>`;
                 resultHTML += `<p><i class="fas fa-calendar-alt"></i>שים לב: התאריך היום הוא ${formattedToday}, ולכן העליה לדרגה ${nextGrade} תתרחש בשנת הלימודים ${futureSchoolYear}. על אף שצברת את כל השעות הנדרשות לעליה בדרגה, עדיין עליך ללמוד 30 שעות בכל שנת לימודים עד אז, כחלק מעיקרון הרצף המחייב כל מורה ללמוד 30 שעות בשנה לכל הפחות.</p>`;
-
             } else {
                 resultHTML += `<p><i class="fas fa-check"></i>לצורך עליה לדרגה ${nextGrade}, נדרשים ${requiredMonths} חודשי פז"ן. השלמת את כל חודשי הפז"ן הנדרשים. כל הכבוד!</p>`;
             }
 
-            // הוספת הודעת האזהרה
             resultHTML += `
                 <p style="color: red; display: flex; align-items: flex-start;">
                     <i class="fas fa-exclamation-triangle" style="margin-left: 10px; color: red;"></i>
