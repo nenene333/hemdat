@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>זמנך אוזל...</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #ff0000;
+            font-family: 'Creepster', cursive;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            animation: pulse 1.5s infinite;
+            background: rgba(50, 0, 0, 0.7);
+            border: 2px solid #600;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #f00;
+            position: relative;
+            z-index: 2;
+        }
+
+        .warning {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #ff0000;
+            animation: textPulse 1s infinite;
+        }
+
+        #countdown {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 0 0 20px #ff0000;
+            font-family: 'digital', monospace;
+            letter-spacing: 3px;
+        }
+
+        .skull {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: skullShake 0.5s infinite;
+        }
+
+        @keyframes skullShake {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.05); filter: brightness(1.2); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+
+        @keyframes textPulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .blood {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,0,0,0.2) 0%, transparent 100%);
+            pointer-events: none;
+            animation: drip 3s infinite;
+        }
+
+        @keyframes drip {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .background-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, #500 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, #500 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 4s infinite;
+            opacity: 0.6;
+        }
+
+        .flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .pentagram {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .warning::before, .warning::after {
+            content: '💀';
+            margin: 0 10px;
+            animation: skullShake 0.5s infinite;
+            display: inline-block;
+        }
+
+        #countdown.ending {
+            animation: danger 0.5s infinite;
+            font-size: 5rem;
+        }
+
+        @keyframes danger {
+            0% { color: #ff0000; text-shadow: 0 0 20px #ff0000; }
+            50% { color: #ff4444; text-shadow: 0 0 40px #ff4444; }
+            100% { color: #ff0000; text-shadow: 0 0 20px #ff0000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blood"></div>
+    <div class="background-effect"></div>
+    <div class="flash"></div>
+    <div class="pentagram">⛧</div>
+    <div class="container">
+        <div class="skull">💀</div>
+        <div class="warning">הגמול שלך הולך לאבדון נצחי במצפן</div>
+        <div id="countdown">00:00:00</div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            // הגדרת תאריך היעד בזמן ישראל
+            const targetDate = new Date('2024-12-03T23:59:59+02:00');
+            const now = new Date();
+            
+            // חישוב ההפרש בזמן
+            const timeLeft = targetDate.getTime() - now.getTime();
+
+            if (timeLeft <= 0) {
+                document.getElementById('countdown').innerHTML = "נגמר הזמן";
+                document.body.style.backgroundColor = "#500";
+                document.querySelector('.warning').innerHTML = "הגמול שלך אבד לנצח";
+                return;
+            }
+
+            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            const countdown = document.getElementById('countdown');
+            countdown.innerHTML = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            // אפקטים נוספים כשנשאר מעט זמן
+            if (hours === 0 && minutes < 30) {
+                countdown.classList.add('ending');
+            }
+        }
+
+        // אפקט הבזק אקראי
+        function randomFlash() {
+            if (Math.random() < 0.1) {
+                const flash = document.querySelector('.flash');
+                flash.style.opacity = '1';
+                setTimeout(() => {
+                    flash.style.opacity = '0';
+                }, 50);
+            }
+        }
+
+        // רעידות מסך אקראיות
+        function randomShake() {
+            if (Math.random() < 0.3) {
+                document.body.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
+                setTimeout(() => {
+                    document.body.style.transform = 'none';
+                }, 100);
+            }
+        }
+
+        // עדכון הספירה לאחור כל שנייה
+        setInterval(updateCountdown, 1000);
+        setInterval(randomFlash, 3000);
+        setInterval(randomShake, 2000);
+        updateCountdown();
+    </script>
+</body>
+</html>
